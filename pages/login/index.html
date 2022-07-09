@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faça login - League of Legends</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../register/style.css" />
+  </head>
+  <body>
+    <main>
+      <aside class="login">
+        <figure class="logo">
+          <img src="../../image/logo.png" />
+        </figure>
+        <div class="login-input">
+          <div class="form-content">
+            <h1 class="title">Fazer login</h1>
+            <form id="login-form" class="login-form">
+              <div class="input">
+                <label for="name" class="placeholder">E-mail</label>
+                <input id="name" type="name" required autocomplete="off" />
+              </div>
+              <div class="input">
+                <label for="password" class="placeholder">Senha</label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="login-content">
+            <div class="login-social-network">
+              <button class="facebook">
+                <img src="../../image/facebook.png" />
+              </button>
+              <button class="google">
+                <img src="../../image/google.png" />
+              </button>
+              <button class="apple">
+                <img src="../../image/apple.png" />
+              </button>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="keep-login" />
+              <label for="keep-login">Manter login</label>
+            </div>
+          </div>
+        </div>
+        <div class="login-submit">
+          <button form="login-form" type="submit" class="register-button">
+            <img src="../../image/arrow-right.svg" />
+          </button>
+          <div class="register">
+            <a href="#"><p>Não consegue iniciar a sessão?</p></a>
+            <a href="#" class="create-account"><p>Criar conta</p></a>
+          </div>
+        </div>
+      </aside>
+      <section class="banner"></section>
+    </main>
+    <script type="module" src="../../firebase/script.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="../register/script.js"></script>
+  </body>
+</html>

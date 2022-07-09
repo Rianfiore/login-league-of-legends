@@ -1,0 +1,349 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  font-family: "Inter", "sans-serif";
+  outline: none;
+}
+
+img {
+  width: 100%;
+  user-select: none;
+}
+
+body {
+  height: 100vh;
+  padding: 2.5%;
+  background-color: #e3e7f1;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0.5vw 0.5vw 0.2vw rgba(0, 0, 0, 0.2));
+}
+
+.login {
+  padding: 8vw 2vw;
+  background-color: white;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5vw;
+}
+
+.logo {
+  width: 50%;
+}
+
+.login-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+}
+
+.form-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5vw;
+}
+
+.title {
+  font-size: 1.2vw;
+  user-select: none;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25vw;
+}
+
+.login-form input {
+  background-color: transparent;
+  padding: 0vw 0.5vw;
+  padding-top: 0.5vw;
+  font-size: 0.9vw;
+}
+
+.login-form .input,
+.login-form input {
+  width: 100%;
+  height: 3.5vw;
+  background-color: #ececec;
+  border: none;
+  border-radius: 0.25vw;
+}
+
+.login-form input:hover {
+  background-color: #e4e4e4;
+}
+
+.login-form input:focus {
+  background-color: transparent;
+  border: 0.1vw solid black;
+}
+
+.login-form .input {
+  background-color: transparent;
+  height: 100%;
+  font-size: 0.8vw;
+}
+
+.login-form .input .placeholder {
+  padding-left: 0.5vw;
+  position: relative;
+  top: 50%;
+  font-size: 0.7vw;
+  text-transform: uppercase;
+  color: #716e6e;
+  font-weight: 700;
+  user-select: none;
+}
+
+.focusedInput {
+  animation: placeholderAnimationIn 0.1s forwards;
+}
+
+.unfocusedInput {
+  animation: placeholderAnimationOut 0.1s forwards;
+}
+
+@keyframes placeholderAnimationIn {
+  from {
+    top: 50%;
+    font-size: 0.7vw;
+  }
+  to {
+    top: 25%;
+    font-size: 0.5vw;
+  }
+}
+
+@keyframes placeholderAnimationOut {
+  from {
+    top: 25%;
+    font-size: 0.5vw;
+  }
+  to {
+    top: 50%;
+    font-size: 0.7vw;
+  }
+}
+
+.login-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+}
+
+.login-social-network {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 1vw;
+}
+
+.login-social-network button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3vw;
+  width: 100%;
+  height: 2.2vw;
+  display: flex;
+  align-items: center;
+}
+
+.login-social-network button img {
+  width: 25%;
+}
+
+.login-social-network .google {
+  background-color: #ca1b1b;
+}
+
+.login-social-network .google:hover {
+  background-color: #af1919;
+}
+
+.login-social-network .facebook {
+  background-color: #2051ff;
+}
+
+.login-social-network .facebook:hover {
+  background-color: #1c44d1;
+}
+
+.login-social-network .apple {
+  background-color: #292727;
+}
+
+.login-social-network .apple:hover {
+  background-color: #000000;
+}
+
+.checkbox {
+  margin: 0;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  cursor: pointer;
+}
+
+.checkbox input {
+  width: 0.8vw;
+  height: 0.8vw;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #e6e4e4;
+  border-radius: 0.1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox:hover input {
+  background-color: #a0a0a0;
+}
+
+.checkbox input:checked {
+  background-color: #ca1b1b;
+}
+
+.checkbox input:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 0.5vw;
+  content: "\f00c";
+  color: white;
+  display: none;
+}
+
+.checkbox input:checked:after {
+  display: block;
+}
+
+.checkbox label {
+  font-size: 0.9vw;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.login-submit {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+
+.login-submit .register-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4vw;
+  height: 4vw;
+  border: 0.15vw solid black;
+  border-radius: 1.5vw;
+  background-color: transparent;
+  padding: 10%;
+  opacity: 0.1;
+}
+
+@keyframes validatedSubmitIn {
+  from {
+  }
+  to {
+    opacity: 1;
+    background-color: #ca1b1b;
+    border: #ca1b1b;
+    cursor: pointer;
+  }
+}
+
+@keyframes validatedSubmitOut {
+  from {
+    opacity: 1;
+    background-color: #ca1b1b;
+    border: #ca1b1b;
+    cursor: pointer;
+  }
+  to {
+    opacity: 0.1;
+    background-color: transparent;
+    border: 0.15vw solid black;
+    cursor: inherit;
+  }
+}
+
+.validated {
+  animation: validatedSubmitIn 0.5s forwards;
+}
+
+.invalidated {
+  animation: validatedSubmitOut 0.5s forwards;
+}
+
+.switchColorIn {
+  animation: switchColorIn 0.5s forwards;
+}
+.switchColorOut {
+  animation: switchColorOut 0.5s forwards;
+}
+
+@keyframes switchColorIn {
+  from {
+    filter: invert(-100%);
+  }
+  to {
+    filter: invert(100%);
+  }
+}
+
+@keyframes switchColorOut {
+  from {
+    filter: invert(100%);
+  }
+  to {
+    filter: invert(-100%);
+  }
+}
+
+.register {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4vw;
+  font-weight: 1000;
+  font-size: 0.7vw;
+  letter-spacing: 0.05vw;
+  text-transform: uppercase;
+}
+
+.register p {
+  color: #6e6e6e;
+}
+
+.register p:hover {
+  color: #292727;
+}
+
+.banner {
+  background-color: green;
+  width: 100%;
+  background: url("../../image/bg.png") no-repeat right;
+  background-size: cover;
+}

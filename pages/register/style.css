@@ -1,0 +1,39 @@
+.modal {
+  position: absolute;
+  align-self: center;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  width: 45vw;
+  height: 40vw;
+  padding: 10vw;
+}
+
+.modal .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+
+.modal .login-form {
+  gap: 1.5vw;
+}
+
+.modal .login-social-network img {
+  width: 15%;
+}
+
+.modal #img {
+  width: 50%;
+}
+
+.modal .close-modal {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+.modal .close-icon img {
+  width: 1vw;
+  cursor: pointer;
+}
