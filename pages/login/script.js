@@ -88,6 +88,7 @@ export function loginScreen() {
   });
 
   function loginWithEmail() {
+    console.log(user);
     login(user, "email");
   }
 

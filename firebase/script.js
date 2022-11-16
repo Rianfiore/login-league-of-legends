@@ -4,6 +4,9 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
+  browserLocalPersistence,
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
 
 import {
@@ -14,6 +17,7 @@ import {
   child,
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
 import { api } from "../../api-lol/api.js";
+import { renderHome } from "../pages/home/script.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -29,7 +33,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const database = getDatabase();
-
 export function login(payload, type) {
   switch (type) {
     case "email":
@@ -42,24 +45,27 @@ export function login(payload, type) {
   function loginUserWithEmail(payload) {
     const email = payload.email;
     const password = payload.password;
+    const keep_login = payload.keep_login
+      ? browserLocalPersistence
+      : browserSessionPersistence;
 
+    console.log(email, password);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const data = {};
         const user = userCredential.user;
         const dbRef = ref(database);
         get(child(dbRef, `users/${user.uid}`))
           .then((snapshot) => {
-            if (snapshot.exists()) {
-              api("summoner", snapshot.val());
-            } else {
-              console.log("no data avaliable");
-            }
+            snapshot.exists()
+              ? api("summoner", snapshot.val())
+              : console.log("no data avaliable");
           })
           .catch((error) => {
             console.log(error);
+            alert(error);
           });
         alert(`Você foi logado com sucesso!`);
+        renderHome();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -95,7 +101,7 @@ export function register(payload, type) {
           uid: user.uid,
         });
 
-        alert.log("Usuário criado com sucesso!");
+        alert("Usuário criado com sucesso!");
         //..
       })
       .catch((error) => {

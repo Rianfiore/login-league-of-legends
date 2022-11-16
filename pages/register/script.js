@@ -1,5 +1,6 @@
 import { register } from "../../firebase/script.js";
 import { loginScreen } from "../login/script.js";
+import { api } from "../../api-lol/api.js";
 
 export function modal() {
   const modal = document.querySelector(".modal");
@@ -10,7 +11,7 @@ export function modal() {
   const [registerInputName, registerInputPassword, registerInputNickname] =
     registerInputs;
   const registerUser = {
-    email: "",
+    email: "rianfiore@gmail.com",
     password: "",
     nickname: "",
   };
@@ -19,14 +20,37 @@ export function modal() {
   const arrowRegisterButton = registerButton.querySelector("#img");
   let registerBackspaceInput = false;
   const closeButton = document.querySelector(".close-button");
+  const checkboxNickname = document.querySelector(".disable-nickname");
+
+  function toggleInput(id) {
+    const input = document.querySelector(id);
+    const placeholder = document.querySelector("#nickname");
+
+    checkboxNickname.checked
+      ? (placeholder.classList.add("enabled"),
+        input.classList.add("enabled"),
+        placeholder.classList.remove("disabled"),
+        input.classList.remove("disabled"))
+      : ((input.value = ""),
+        input.classList.add("disabled"),
+        placeholder.classList.add("disabled"),
+        input.classList.remove("enabled"),
+        placeholder.classList.remove("enabled"));
+  }
 
   function checkInputLength(user) {
     return user.email.length > 0 &&
-      user.nickname.length > 0 &&
+      (checkboxNickname.checked
+        ? user.nickname.length > 0
+        : user.nickname.length === 0) &&
       user.password.length >= 8
       ? true
       : false;
   }
+
+  checkboxNickname.addEventListener("change", () => {
+    toggleInput("#register-nickname");
+  });
 
   closeButton.addEventListener("click", () => {
     closeRegisterModal();
@@ -74,17 +98,19 @@ export function modal() {
           .classList.remove("focusedInput"));
     });
 
-  registerInputNickname.querySelector("input").addEventListener("focus", () => {
-    registerInputNickname
-      .querySelector(".placeholder")
-      .classList.add("focusedInput");
-    registerInputNickname
-      .querySelector(".placeholder")
-      .classList.remove("unfocusedInput");
-  });
+  registerInputNickname
+    .querySelector("#register-nickname")
+    .addEventListener("focus", () => {
+      registerInputNickname
+        .querySelector(".placeholder")
+        .classList.add("focusedInput");
+      registerInputNickname
+        .querySelector(".placeholder")
+        .classList.remove("unfocusedInput");
+    });
 
   registerInputNickname
-    .querySelector("input")
+    .querySelector("#register-nickname")
     .addEventListener("focusout", (event) => {
       event.target.value.length === 0 &&
         (registerInputNickname
@@ -124,9 +150,17 @@ export function modal() {
         (registerBackspaceInput = false));
   });
 
-  registerButton.addEventListener("click", () =>
-    register(registerUser, "email")
-  );
+  registerButton.addEventListener("click", () => {
+    checkInputLength(registerUser)
+      ? checkboxNickname.checked
+        ? verifyNickname(registerUser)
+        : register(registerUser, "email")
+      : console.log("Erro: preencha os campos obrigatórios");
+  });
+
+  async function verifyNickname(registerUser) {
+    (await api("summoner", registerUser)) && register(registerUser, "email");
+  }
 
   function closeRegisterModal() {
     document.querySelector(".modal").outerHTML = "";

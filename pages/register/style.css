@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   width: 45vw;
-  height: 40vw;
+  height: 45vw;
   padding: 10vw;
 }
 
@@ -30,7 +30,37 @@
 .modal .close-modal {
   position: absolute;
   top: 2%;
-  right: 2%;
+  right: 4.5%;
+}
+
+.modal .league-account .disable-nickname {
+  width: 1vw;
+  height: 1vw;
+  cursor: pointer;
+}
+
+.modal .league-account {
+  display: grid;
+  grid-template-columns: 0.1fr 2fr 1fr;
+  width: 100%;
+  padding-top: 2vw;
+  padding-bottom: 1vw;
+}
+
+.modal .league-account p {
+  font-size: 0.9vw;
+  font-weight: 500;
+  user-select: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  display: none;
+}
+
+.enabled {
+  opacity: 1;
+  display: inherit;
 }
 
 .modal .close-icon img {

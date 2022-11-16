@@ -1,24 +1,32 @@
 const apiData = {
   base_url: "https://br1.api.riotgames.com",
-  api_key: "RGAPI-f2630aeb-2b20-4a06-8a3c-01b1fcfb1e1d",
+  api_key: "RGAPI-51ba6f6d-c476-4092-b79f-37504253e916",
   end_points: {
     summoner: "/lol/summoner/v4/summoners/by-name/",
   },
 };
 
-export function api(endPoint, payload) {
+export async function api(endPoint, payload) {
   switch (endPoint) {
     case "summoner":
-      getSummonerRequest();
-      break;
+      return await getSummonerRequest();
     default:
+      console.log("Erro: endpoint não encontrado.");
       break;
   }
 
   async function getSummonerRequest() {
     const url = `${apiData.base_url}${apiData.end_points.summoner}${payload.nickname}?api_key=${apiData.api_key}`;
-    const data = await fetch(url).then((res) => res.json());
+    const data = await fetch(url)
+      .then(() => true)
+      .catch(() => {
+        alert(
+          "Apelido no jogo não encontrado. Por favor, desmarque a opção ou digite o apelido corretamente!"
+        );
 
-    console.log(data, payload);
+        return false;
+      });
+
+    return data;
   }
 }
